@@ -1,33 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.araien_subbook.MainActivity">
 
-    <ListView
-        android:id="@+id/SubList"
-        android:layout_width="374dp"
-        android:layout_height="455dp"
-        android:backgroundTint="@android:color/darker_gray"
-        android:clickable="false"
-        android:clipChildren="false"
-        android:scrollbarStyle="insideOverlay"
-        android:scrollbars="none"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/AddSub"
         style="@android:style/Widget.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="12dp"
+        android:layout_alignStart="@+id/recyclerView"
+        android:layout_below="@+id/recyclerView"
         android:elevation="0dp"
         android:text="@string/add"
         android:visibility="visible"
@@ -40,7 +25,8 @@
         style="@android:style/Widget.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_below="@+id/recyclerView"
+        android:layout_centerHorizontal="true"
         android:text="@string/edit"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,11 +38,22 @@
         style="@android:style/Widget.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="12dp"
+        android:layout_alignEnd="@+id/recyclerView"
+        android:layout_below="@+id/recyclerView"
         android:text="@string/delete"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
-</android.support.constraint.ConstraintLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="368dp"
+        android:layout_height="450dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/AddSub"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</RelativeLayout>

@@ -10,31 +10,31 @@ import java.util.Date;
 
 public class Subscription {
 
-    private Date date;          // Date the subscription started
     private String name;        // Name of the subscription
+    private String date;        // Date the subscription started
     private String comment;     // An (optional) comment about the subscription
     private double charge;      // The monthly charge incurred by the subscription
 
 
 
     // Constructor in case of no comment
-    public Subscription(Date date, String name, double charge) {
+    public Subscription(String date, String name, double charge) {
         this(date, name, charge, "");
     }
 
     // Constructor in case a comment is provided
-    public Subscription(Date date, String name, double charge, String comment) {
-        this.date = date;
+    public Subscription(String date, String name, double charge, String comment) {
         this.name = name;
+        this.date = date;
         this.charge = charge;
         this.comment = comment;
     }
 
     // Get subscription sate
-    public Date getDate()  { return this.date; }
+    public String getDate()  { return this.date; }
 
     // Set subscription date
-    public void setDate(Date date) { this.date = date; }
+    public void setDate(String date) { this.date = date; }
 
     // Get subscription name
     public String getName() { return this.name; }
