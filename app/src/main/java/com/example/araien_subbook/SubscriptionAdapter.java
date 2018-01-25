@@ -61,9 +61,9 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
         private SubscriptionViewHolder(View view) {
             super(view);
             subName = view.findViewById(R.id.subName);
-            subDateValue = view.findViewById(R.id.subDateValue);
-            subChargeValue = view.findViewById(R.id.subChargeValue);
-            subCommentValue = view.findViewById(R.id.subCommentValue);
+            subDateValue = view.findViewById(R.id.subDate);
+            subChargeValue = view.findViewById(R.id.subCharge);
+            subCommentValue = view.findViewById(R.id.subComment);
         }
 
     }
