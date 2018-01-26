@@ -13,17 +13,15 @@ public class Subscription {
     private String name;        // Name of the subscription
     private String date;        // Date the subscription started
     private String comment;     // An (optional) comment about the subscription
-    private double charge;      // The monthly charge incurred by the subscription
-
-
+    private String charge;      // The monthly charge incurred by the subscription
 
     // Constructor in case of no comment
-    public Subscription(String date, String name, double charge) {
+    public Subscription(String date, String name, String charge) {
         this(date, name, charge, "");
     }
 
     // Constructor in case a comment is provided
-    public Subscription(String date, String name, double charge, String comment) {
+    public Subscription(String date, String name, String charge, String comment) {
         this.name = name;
         this.date = date;
         this.charge = charge;
@@ -43,10 +41,10 @@ public class Subscription {
     public void setName(String name) { this.name = name; }
 
     // Get charge
-    public double getCharge() { return this.charge; }
+    public String getCharge() { return this.charge; }
 
     // Set charge
-    public void setCharge(Double charge) { this.charge = charge; }
+    public void setCharge(String charge) { this.charge = charge; }
 
     // Get comment
     public String getComment() { return this.comment; }
