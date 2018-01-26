@@ -7,4 +7,7 @@
     <string name="subscription">SSSSSSSSSSSSSSSSSSSSZZZZZ</string>
     <string name="date">2018-01-17</string>
     <string name="comment">CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC</string>
+    <string name="save">Save</string>
+    <string name="subscription_name">Subscription Name</string>
+    <string name="cancel">Cancel</string>
 </resources>

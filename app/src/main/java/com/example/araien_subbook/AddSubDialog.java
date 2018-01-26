@@ -35,29 +35,38 @@ public class AddSubDialog extends DialogFragment {
         final View view = inflater.inflate(R.layout.add_sub_dialog, null);
         builder.setView(view);
 
-        // Set the title of the dialog box and create buttons for cancelling, adding subscriptions
-        builder.setMessage("Add Subscription")
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // Do nothing
-                    }
-                })
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+        // Set the title of the dialog box
+        builder.setMessage("Add Subscription");
 
-                        // TODO: Make sure strings adhere to assignment constraints
+        // Set the cancel button
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Do nothing
+            }
+        });
 
-                       Subscription sub = new Subscription(date.getText().toString(),
-                                                            name.getText().toString(),
-                                                            charge.getText().toString(),
-                                                            comment.getText().toString());
-                       listener.addSubscription(sub);
+        // Set the OK button, where a subscription that adheres to given constraints
+        // is passed back to the main activity to be added to a subscription list.
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // TODO: Make sure strings adhere to assignment constraints
 
-                    }
-                });
+               // TODO: Use toast to notify user of erroneous inputs
 
+               Subscription sub = new Subscription(date.getText().toString(),
+                                                    name.getText().toString(),
+                                                    charge.getText().toString(),
+                                                    comment.getText().toString());
+
+               // Only call this when all constraints are OK
+               listener.addSubscription(sub);
+
+            }
+        });
+
+        // Establish dialog box EditText components
         name = view.findViewById(R.id.txtAddSubDialogName);
         date = view.findViewById(R.id.txtAddSubDialogDate);
         charge = view.findViewById(R.id.txtAddSubDialogCharge);
@@ -65,8 +74,8 @@ public class AddSubDialog extends DialogFragment {
         return builder.create();
     }
 
-    // TODO: description, investigate purpose
-    // Implemented by MainActivity so that a subscription can be retrieved from the dialog box
+    // Implemented by MainActivity so that a subscription can be retrieved from the dialog box.
+    // In other words, allows a subscription to be retrieved from this dialog box.
     public interface AddSubDialogListener {
         void addSubscription(Subscription sub);
     }

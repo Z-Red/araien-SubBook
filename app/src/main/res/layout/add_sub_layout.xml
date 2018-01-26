@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.araien_subbook.AddSubActivity">
+
+    <Button
+        android:id="@+id/btnAddSubCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnAddSubOK"
+        android:layout_alignBottom="@+id/btnAddSubOK"
+        android:layout_alignParentStart="true"
+        android:text="@string/cancel"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="69dp" />
+
+    <Button
+        android:id="@+id/btnAddSubOK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/etAddSubComment"
+        android:layout_below="@+id/etAddSubCharge"
+        android:layout_marginTop="48dp"
+        android:text="@android:string/VideoView_error_button"
+        tools:layout_editor_absoluteX="116dp"
+        tools:layout_editor_absoluteY="69dp" />
+
+    <EditText
+        android:id="@+id/etAddSubName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etAddSubDate"
+        android:layout_alignParentStart="true"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/subscription_name"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="139dp" />
+
+    <EditText
+        android:id="@+id/etAddSubDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etAddSubCharge"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="11dp"
+        android:ems="10"
+        android:inputType="textPersonName|date"
+        android:text="@string/date"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="185dp" />
+
+    <EditText
+        android:id="@+id/etAddSubCharge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etAddSubComment"
+        android:layout_alignParentStart="true"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/monthly_charge"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="232dp" />
+
+    <EditText
+        android:id="@+id/etAddSubComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="206dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="278dp" />
+</RelativeLayout>

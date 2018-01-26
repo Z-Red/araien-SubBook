@@ -1,6 +1,7 @@
 package com.example.araien_subbook;
 
 import java.util.Date;
+import java.io.Serializable;
 
 /**
  * Created by zachredfern on 2018-01-16.
@@ -8,7 +9,7 @@ import java.util.Date;
  *
  */
 
-public class Subscription {
+public class Subscription implements Serializable {
 
     private String name;        // Name of the subscription
     private String date;        // Date the subscription started
