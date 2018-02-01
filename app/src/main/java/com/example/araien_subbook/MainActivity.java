@@ -1,103 +1,99 @@
+/*
+ *    MainActivity.java
+ *
+ *    Copyright 2018 Araien Redfern
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+
 package com.example.araien_subbook;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.content.Intent;
-import android.net.wifi.aware.SubscribeConfig;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.content.Intent;
 import android.widget.Button;
-
+import android.app.Activity;
 import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import android.view.View;
 
+/**
+ *
+ */
 public class MainActivity extends AppCompatActivity {
 
-    public RecyclerView recyclerView;
-    public SubscriptionAdapter subAdapter;
     public ArrayList<Subscription> subList;
+    public RecyclerView recyclerView;
+    public SubAdapter subAdapter;
 
-    private Button btnAddSub, btnSaveSub;
+    private Button btnSaveSub;
+    private Button btnAddSub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        // Set up the subscription list
+        /* Set up Subscription list and load any existing subscription. */
         subList = new ArrayList<>();
-        //loadSubscriptions();
-        // TODO: Load subscriptions if they exist
+        loadSubscriptions();
 
-
-        // use the custom subscription adapter to enable the recycler
-        // view to hold subscriptions displayed via card view
+        /* Put Subscriptions into the recycler view. */
+        subAdapter = new SubAdapter(this, subList);
         recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
+
+        /* Set up recycler view using custom Subscription adapter and card view */
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        subAdapter = new SubscriptionAdapter(this, subList);
         recyclerView.setAdapter(subAdapter);
+        recyclerView.setHasFixedSize(true);
 
-        // Establish activity buttons and their respective on click functions
-        detectAddSubButton();
+        // Detect on click capabilities of this view
         detectSaveSubButton();
-
-
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        // https://www.youtube.com/watch?v=bhhs4bwYyhc
-        // 2018-01-26
-        subAdapter.setOnItemClickListener(new SubscriptionAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                openEditSubActivity(position);
-            }
-        });
-        ////////////////////////////////////////////////////////////////////////////////////////////
+        detectAddSubButton();
 
     }
 
-    // Opens the activity to add a subscription to the subscription list
+    /* Opens the activity to add a subscription to the subscription list. */
     public void openAddSubActivity() {
         Intent intent = new Intent(this, AddSubActivity.class);
-        // no need to putExtra, we are not PROVIDING info to the activity, only taking it
         startActivityForResult(intent, 1 );
     }
 
-    // Opens the activity to edit an existing subscription from the subscription list
+    /* Opens the activity to edit an existing subscription from the subscription list. */
     public void openEditSubActivity(int position) {
         Intent intent = new Intent(this, EditSubActivity.class);
 
-        // Get the subscription that was clicked in the recycler view
+        /* Get the subscription that was clicked in the recycler view. */
         Subscription sub = subList.get(position);
-
-        // pass the subscription to the edit subscription activity
-        // along with the position it held in the subscription list
         intent.putExtra("sub", sub);
         intent.putExtra("position", position);
         startActivityForResult(intent, 2);
     }
 
-    // Need to differentiate between returning activities
+    /* Called when returning from an add or edit subscription activity. */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //super.onActivityResult(requestCode, resultCode, data);
 
-        // If we had an add subscription activity called
+        /* If add subscription activity called, add new subscription to the sub list. */
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
             Subscription sub = (Subscription)data.getSerializableExtra("sub");
             subList.add(sub);
             subAdapter.notifyDataSetChanged();
         }
 
-        // If we had an edit subscription activity called
+        /* If edit subscription activity called, replace subscription with revision. */
         else if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
-            // get array position
-            // replace subscription at that location with new version
             Subscription sub = (Subscription)data.getSerializableExtra("sub");
             int position = data.getIntExtra("position", 0);
             subList.set(position, sub);
@@ -106,17 +102,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Uses GSON to save the object list
+    /* Uses GSON to save the object list. */
     private void saveSubscriptions() {
         // TODO: Save subscription list
+        return;
     }
 
-    // load subscriptions from a file if one exists
+    /* Load subscriptions from a file if one exists. */
     private void loadSubscriptions() {
         // TODO: Open subscription list if a file exists to do so
+        return;
     }
 
-    // Detect the add subscription button and set its on click capability
+    /* Detect the add subscription button and set its on click capability. */
     private void detectAddSubButton() {
         btnAddSub = findViewById(R.id.btnAddSub);
         btnAddSub.setOnClickListener(new View.OnClickListener() {
@@ -127,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Detect the save subscriptions button and set its on click capability
+    /* Detect the save subscriptions button and set its on click capability. */
     public void detectSaveSubButton() {
         btnSaveSub = findViewById(R.id.btnSaveSub);
         btnSaveSub.setOnClickListener(new View.OnClickListener() {
@@ -137,4 +135,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }
