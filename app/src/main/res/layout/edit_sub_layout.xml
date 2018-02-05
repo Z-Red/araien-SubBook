@@ -10,9 +10,9 @@
         android:id="@+id/btnEditSubCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnEditSubOK"
-        android:layout_alignBottom="@+id/btnEditSubOK"
-        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etEditSubCharge"
+        android:layout_marginTop="49dp"
+        android:layout_toStartOf="@+id/btnEditSubOK"
         android:text="@string/cancel"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="69dp" />
@@ -21,9 +21,9 @@
         android:id="@+id/btnEditSubOK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etEditSubCharge"
-        android:layout_marginTop="49dp"
-        android:layout_toEndOf="@+id/btnEditSubCancel"
+        android:layout_alignBaseline="@+id/btnEditSubDelete"
+        android:layout_alignBottom="@+id/btnEditSubDelete"
+        android:layout_centerHorizontal="true"
         android:text="@android:string/VideoView_error_button"
         tools:layout_editor_absoluteX="116dp"
         tools:layout_editor_absoluteY="69dp" />
@@ -33,10 +33,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/etEditSubDate"
-        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/btnEditSubDelete"
+        android:layout_alignStart="@id/btnEditSubCancel"
+        android:layout_centerHorizontal="true"
         android:ems="10"
+        android:hint="Subscription Name"
         android:inputType="textPersonName"
-        android:text="@string/subscription_name"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="139dp" />
 
@@ -45,11 +47,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/etEditSubCharge"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="11dp"
+        android:layout_alignEnd="@+id/btnEditSubDelete"
+        android:layout_alignStart="@+id/btnEditSubCancel"
         android:ems="10"
+        android:hint="Date (YYYY-MM-DD)"
         android:inputType="textPersonName|date"
-        android:text="@string/date"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="185dp" />
 
@@ -58,10 +60,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/etEditSubComment"
-        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@id/btnEditSubDelete"
+        android:layout_alignStart="@id/btnEditSubCancel"
         android:ems="10"
+        android:hint="Monthly Charge (CAD $)"
         android:inputType="textPersonName"
-        android:text="@string/monthly_charge"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="232dp" />
 
@@ -69,10 +72,12 @@
         android:id="@+id/etEditSubComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/btnEditSubDelete"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="206dp"
+        android:layout_alignStart="@+id/etEditSubCharge"
+        android:layout_marginBottom="199dp"
         android:ems="10"
+        android:hint="Optional Comment"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="278dp" />
@@ -81,8 +86,18 @@
         android:id="@+id/btnEditSubDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnEditSubOK"
-        android:layout_alignBottom="@+id/btnEditSubOK"
+        android:layout_alignBaseline="@+id/btnEditSubCancel"
+        android:layout_alignBottom="@+id/btnEditSubCancel"
         android:layout_toEndOf="@+id/btnEditSubOK"
         android:text="@string/delete" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="264dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etEditSubName"
+        android:layout_alignStart="@+id/etEditSubName"
+        android:text="Edit Subscription"
+        android:textAlignment="center"
+        android:textSize="18sp" />
 </RelativeLayout>

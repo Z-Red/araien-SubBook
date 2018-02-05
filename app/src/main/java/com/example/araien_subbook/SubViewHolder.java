@@ -30,15 +30,12 @@ import android.view.View;
  *
  * Holds the view information from a given Subscription.
  */
-////////////////////////////////////////////////////////////////////////////////////////////////
-// https://www.youtube.com/watch?v=a4o9zFfyIM4
-// 2018-01-24
 public class SubViewHolder extends RecyclerView.ViewHolder {
 
-    TextView subComment;
-    TextView subCharge;
-    TextView subName;
-    TextView subDate;
+    public TextView subComment;
+    public TextView subCharge;
+    public TextView subName;
+    public TextView subDate;
 
     /* Constructor, instantiates the subscription view holder. */
     public SubViewHolder(View view, final Context context) {

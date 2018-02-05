@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/btnAddSubOK"
         android:layout_alignBottom="@+id/btnAddSubOK"
-        android:layout_alignParentStart="true"
+        android:layout_alignLeft="@id/btnAddSubOK"
+        android:layout_alignStart="@+id/etAddSubComment"
         android:text="@string/cancel"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="69dp" />
@@ -24,6 +25,7 @@
         android:layout_alignEnd="@+id/etAddSubComment"
         android:layout_below="@+id/etAddSubCharge"
         android:layout_marginTop="48dp"
+        android:layout_toRightOf="@id/btnAddSubCancel"
         android:text="@android:string/VideoView_error_button"
         tools:layout_editor_absoluteX="116dp"
         tools:layout_editor_absoluteY="69dp" />
@@ -33,10 +35,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/etAddSubDate"
-        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
         android:ems="10"
+        android:hint="Subscription Name"
         android:inputType="textPersonName"
-        android:text="@string/subscription_name"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="139dp" />
 
@@ -45,11 +47,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/etAddSubCharge"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="11dp"
+        android:layout_centerHorizontal="true"
         android:ems="10"
+        android:hint="Date (YYYY-MM-DD)"
         android:inputType="textPersonName|date"
-        android:text="@string/date"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="185dp" />
 
@@ -58,10 +59,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/etAddSubComment"
-        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/etAddSubDate"
         android:ems="10"
+        android:hint="Monthly Charge (CAD $)"
         android:inputType="textPersonName"
-        android:text="@string/monthly_charge"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="232dp" />
 
@@ -69,11 +70,22 @@
         android:id="@+id/etAddSubComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/etAddSubCharge"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="206dp"
+        android:layout_marginBottom="205dp"
         android:ems="10"
+        android:hint="Optional Comment"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="278dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etAddSubName"
+        android:layout_alignStart="@+id/etAddSubName"
+        android:text="Add Subscription"
+        android:textAlignment="center"
+        android:textSize="18sp" />
 </RelativeLayout>

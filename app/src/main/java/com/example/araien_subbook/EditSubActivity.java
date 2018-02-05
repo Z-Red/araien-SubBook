@@ -26,6 +26,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 // TODO: Clean up layout
 
@@ -88,10 +93,10 @@ public class EditSubActivity extends AppCompatActivity {
                 charge = findViewById(R.id.etEditSubCharge);
                 comment = findViewById(R.id.etEditSubComment);
 
-
-                // TODO: Ensure constraints are met
-                // TODO: If constraints not met, send toast message notifying user
-
+                // If constraint check failed, abort
+                if (!validConstraints()) {
+                    return;
+                }
 
                 Subscription sub = new Subscription(date.getText().toString(),
                                                     name.getText().toString(),
@@ -118,7 +123,73 @@ public class EditSubActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // TODO: Delete the given subscription entry from the subscription list
+                int position = getIntent().getIntExtra("position", 0);
+                Intent intent = new Intent();
+                intent.putExtra("position", position);
+                setResult(MainActivity.RESULT_DELETE, intent);
+                finish();
             }
         });
     }
+
+    // Check data value constraints
+    private boolean validConstraints() {
+
+        // Check subscription name constraints
+        if (name.getText().toString().length() == 0) {
+            Toast.makeText(EditSubActivity.this, "Must supply a subscription name", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if (name.getText().toString().length() > 20) {
+            Toast.makeText(EditSubActivity.this, "Subscription Name must be 20 characters or less", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        // Check charge value constraints
+        if (charge.getText().toString().length() == 0) {
+            Toast.makeText(EditSubActivity.this, "Must supply a charge", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        else {
+            try {
+                Double chrg = Double.parseDouble(charge.getText().toString());
+                if (chrg < 0.0) {
+                    Toast.makeText(EditSubActivity.this, "Charge must be non-negative", Toast.LENGTH_LONG).show();
+                    return false;
+                }
+            }
+            catch (Exception e) {
+                Toast.makeText(EditSubActivity.this, "Must supply a valid charge", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        // Check date constraints
+        if (date.getText().toString().length() == 0) {
+            Toast.makeText(EditSubActivity.this, "Must supply a date", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        // http://www.mkyong.com/java/how-to-check-if-date-is-valid-in-java/
+        // February 4, 2018
+        else {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            sdf.setLenient(false);
+            try {
+                Date d = sdf.parse(date.getText().toString());
+            }
+            catch (ParseException e) {
+                Toast.makeText(EditSubActivity.this, "Must supply a valid date", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+
+        // Check optional comment constraints
+        if (comment.getText().toString().length() > 30) {
+            Toast.makeText(EditSubActivity.this, "Comment must be 30 characters or less", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
+    }
+
 }
