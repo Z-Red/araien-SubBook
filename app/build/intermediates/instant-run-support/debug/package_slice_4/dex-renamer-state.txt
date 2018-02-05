@@ -1,0 +1,4 @@
+#Sun Feb 04 14:43:34 MST 2018
+base.0=/Applications/UofA Undergrad/CMPUT/CMPUT 301/Assignments/Assignment 1/araien-SubBook/app/build/intermediates/transforms/dexMerger/debug/270
+path.0=classes.dex
+renamed.0=classes.dex
