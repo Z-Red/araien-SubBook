@@ -1,0 +1,21 @@
+Assignment 1 UML Diagram Class Notes
+
+AppCompatActivity: The parent class of the activities in this app. For use on the creation of activities and the implementation of on-click capabilities of the buttons within the sub-class activities.
+
+MainActivity: The first activity presented to the user. Displays a list of subscriptions and has buttons to add subscriptions and save the current list of subscriptions. A subscription can be edited by clicking it in the view.
+
+AddSubActivity: An activity designed to create a brand new subscription and add it to the subscription list.
+
+EditSubActivity: An activity designed to edit an existing subscription from the subscription list.
+
+RecyclerView.ViewHolder: A parent of the SubViewHolder class that will allow us to have a custom layout for a subscription in the recycler view.
+
+SubViewHolder: Allows for a row in the recycler view of the main activity to display the information of a subscription.
+
+RecyclerView.Adapter: A parent of the SubAdapter class that will adapt a subscription class into a view holder.
+
+SubAdapter: Specifically defines the layout of the subscription that will be placed as a row in the recycler view.
+
+Serializable: Allows the subscription class to be serialized via intent to pass a subscription between activities.
+
+Subscription: Contains all the information relating to a single instance of a subscription.
